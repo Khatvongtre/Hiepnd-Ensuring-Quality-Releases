@@ -1,7 +1,7 @@
 #!/bin/bash
 RESOURCE_GROUP_NAME="AzureDevops"
-STORAGE_ACCOUNT_NAME="tfstate$RANDOM$RANDOM"
-CONTAINER_NAME="tfstate"
+STORAGE_ACCOUNT_NAME="storage$RANDOM$RANDOM"
+CONTAINER_NAME="storage"
 
 # This command is not needed in the Udacity provided Azure account. 
 # Create resource group
