@@ -1,0 +1,56 @@
+{
+	"variables": {
+		"client_id": "bed9021c-d699-4b82-a0bd-be5b8ce9f8c0",
+		"client_secret": "XsQ8Q~3r6-VNV2~e9Oiw6f01Dg.9EkrOpRtE5bXT",
+		"subscription_id": "e2bf10f5-b611-44c7-9617-4a26610fc460"
+	},
+	"builders": [{
+		"type": "azure-arm",
+		 
+		"client_id": "{{user `client_id`}}",
+		"client_secret": "{{user `client_secret`}}",
+		"subscription_id": "{{user `subscription_id`}}",
+	 
+		"os_type": "Linux",
+		"image_publisher": "Canonical",
+		"image_offer": "UbuntuServer",
+		"image_sku": "18.04-LTS",
+	 
+		"managed_image_resource_group_name": "Azuredevops",
+		"managed_image_name": "ubuntu1804",
+	 	
+		"azure_tags": {
+			"env": "dev"
+		},
+		
+		"location": "East US",
+		"vm_size": "Standard_DS1_v2"
+	}],
+	"provisioners": [{
+		"inline": [
+            "cd ~",
+            "sudo apt update",
+            "sudo apt install -y unzip xvfb libxi6 libgconf-2-4 ",
+            "sudo apt install default-jdk",
+            "sudo apt -y update",
+            "wget https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar",
+            "mv selenium-server-standalone-3.141.59.jar selenium-server-standalone.jar",
+            "wget http://www.java2s.com/Code/JarDownload/testng/testng-6.8.7.jar.zip",
+            "unzip testng-6.8.7.jar.zip",
+            "sudo apt-get update",
+            "sudo apt-get upgrade -y",
+            "sudo apt-get install python3-pip -y",
+            "sudo apt-get install unzip -y",
+            "sudo apt-get install -y chromium-browser",
+            "pip3 install selenium",
+            "echo '--------------->Check result'",
+            "echo chromium-browser --version",
+            "echo chromedriver --version",
+            "pwd",
+            "ls",
+            "echo '--------------->Done'"
+		],
+		"inline_shebang": "/bin/sh -x",
+		"type": "shell"
+	}]
+}
