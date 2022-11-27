@@ -64,7 +64,7 @@ stages:
     # Postman - Install Newman    
     # ToDo: Update the command and verify the working directory
   
-  - job: Publish Artifact
+  - job: PublishArtifact
     displayName: 'Publish artifacts: Selenium tests, FakeRestAPI code'
     dependsOn: BuildInfrastructureWithTerraform
     condition: true
