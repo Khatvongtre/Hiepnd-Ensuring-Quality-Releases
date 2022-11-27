@@ -22,7 +22,7 @@ stages:
 - stage: Build
   jobs:
   - job: BuildInfrastructureWithTerraform
-    condition: false
+    condition: true
     steps:
     #--------------------------------------------#  
     # Use Terraform to create the Infrastructure      
@@ -128,7 +128,7 @@ stages:
  # Selenium | Functional UI Tests
  # ToDo: 
   - deployment: DeployVM
-    condition: false
+    condition: true
     displayName: Deploy VM and execute Selenium tests
     workspace:
       clean: all
