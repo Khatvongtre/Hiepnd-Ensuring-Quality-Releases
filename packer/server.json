@@ -1,8 +1,8 @@
 {
 	"variables": {
-		"client_id": "c7917fe4-2075-4d30-a0ff-a5182122f2ec",
-		"client_secret": "KCg8Q~Ld3nT9B1JXwnrg9VuUV_vLQbhWeqZGOdqk",
-		"subscription_id": "373225e3-4428-4fd7-bd11-c0f187aa1371"
+		"client_id": "65f23613-b97f-4050-9ff1-8ebca0a8ed91",
+		"client_secret": "UJa8Q~SQLCbuxyem_FXMtp7it204ZlX.8CvzcaSw",
+		"subscription_id": "d06323f0-ffb0-484c-9e89-0ca5e1d58412"
 	},
 	"builders": [{
 		"type": "azure-arm",
