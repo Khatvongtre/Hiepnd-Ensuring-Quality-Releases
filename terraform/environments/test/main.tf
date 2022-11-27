@@ -7,7 +7,7 @@ provider "azurerm" {
 }
 terraform {
   backend "azurerm" {
-    storage_account_name = "storage2434610036"
+    storage_account_name = "storagehiepnd2022"
     container_name       = "storage"
     key                  = "test.terraform.storage"
     access_key           = "qTPSU76YSiot1XOfN0tNHnG6G3qy1kr7B3kE4thUB4SZTRWXGOfm7Vam6FF8/C1DkJjMINHMZBXd+AStpxjQxg=="

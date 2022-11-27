@@ -21,4 +21,4 @@ vm_username = "hiepnd"
 vm_password = "Vietnams@2022"
 
 # Image for linux
-image_name = "ubuntu1804"
+image_name = "imageubuntu1804"

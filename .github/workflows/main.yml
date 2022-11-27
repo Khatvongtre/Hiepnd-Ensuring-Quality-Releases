@@ -9,8 +9,8 @@ variables:
   azureServiceConnectionId: 'DevopsServiceConnection'
   projectRoot: $(System.DefaultWorkingDirectory)
   environmentName: 'test'
-  poolName: 'test-pool'
-  appName: 'devops-azure-test-app-service'
+  poolName: 'devops-pool'
+  appName: 'devops-azure-app-service'
 
 pool: 
   name: '$(poolName)'
@@ -21,7 +21,7 @@ stages:
 #--------------------------------------------#    
 - stage: Build
   jobs:
-  - job: BuildInfrastructureWithTerraform
+  - job: Build Infrastructure With Terraform
     condition: false
     steps:
     #--------------------------------------------#  
@@ -41,7 +41,7 @@ stages:
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
         backendServiceArm: '$(azureServiceConnectionId)'
         backendAzureRmResourceGroupName: 'Azuredevops'
-        backendAzureRmStorageAccountName: 'storage2434610036'
+        backendAzureRmStorageAccountName: 'storagehiepnd2022'
         backendAzureRmContainerName: 'storage'
         backendAzureRmKey: 'test.terraform.storage'
    
@@ -64,7 +64,7 @@ stages:
     # Postman - Install Newman    
     # ToDo: Update the command and verify the working directory
   
-  - job: UploadArtifactForVmAndAppService
+  - job: Publish Artifact
     displayName: 'Publish artifacts: Selenium tests, FakeRestAPI code'
     dependsOn: BuildInfrastructureWithTerraform
     condition: true
@@ -107,7 +107,7 @@ stages:
   jobs:
   #--------------------------------------------#  
   # Deploy FakeRestAPI Web App
-  - deployment: DeployAppService
+  - deployment: Deploy_App_Service
     condition: false
     pool: 
       name: '$(poolName)'
@@ -127,7 +127,7 @@ stages:
   #--------------------------------------------#  
  # Selenium | Functional UI Tests
  # ToDo: 
-  - deployment: DeployVM
+  - deployment: Deploy_VM
     displayName: Deploy VM and execute Selenium tests
     workspace:
       clean: all
@@ -250,7 +250,7 @@ stages:
           rm -rf tests
           echo '-------> Cleanned old data'
           
-          export PATH=$PATH:/home/nghianv/Desktop/Tools/apache-jmeter-5.5/bin 
+          export PATH=$PATH:/home/hiepnd/Desktop/Tools/apache-jmeter-5.5/bin 
           echo '-------> path with jmeter:' $PATH
           
           echo '-------> jmeter testing endurance...'
