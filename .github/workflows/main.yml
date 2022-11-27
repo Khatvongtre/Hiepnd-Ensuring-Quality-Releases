@@ -105,7 +105,7 @@ stages:
 # DEPLOYMENT STAGE
 #--------------------------------------------#    
 - stage: Deploy
-  condition: false
+  condition: true
   jobs:
   #--------------------------------------------#  
   # Deploy FakeRestAPI Web App
