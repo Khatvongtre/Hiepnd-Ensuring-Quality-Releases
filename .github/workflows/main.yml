@@ -186,7 +186,7 @@ stages:
 # TEST STAGE
 #--------------------------------------------#    
 - stage: Test
-  condition: false
+  condition: true
   jobs:
   - job: TestWithPostman
     condition: false
