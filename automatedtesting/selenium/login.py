@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 import datetime
-
+import syslog
 
 def timestamp():
     ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -13,6 +13,7 @@ def login(user, password):
     
     # go to login page.
     print(timestamp() + 'Starting the browser...')
+    syslog.syslog('Starting the browser...')
     options = ChromeOptions()
     options.add_argument('--no-sandbox')
     options.add_argument("--headless") 
@@ -27,7 +28,6 @@ def login(user, password):
     driver.find_element(By.ID, "login-button").click()
     product_label = driver.find_element(By.CSS_SELECTOR, "div[class='inventory_item_name']").text
     assert "Sauce Labs Backpack" in product_label
-    print(timestamp() + 'Login successfully with username {:s} and password {:s}.'.format(user, password))
     
     return driver
 
