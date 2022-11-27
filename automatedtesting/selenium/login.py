@@ -7,11 +7,12 @@ import syslog
 def timestamp():
     ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return (ts + '\t')
-
+    
+# Using syslog --> log to Log Analytics
 # Start the browser and login with standard_user
 def login(user, password):
     
-    # go to login page.
+    # Login page.
     syslog.syslog('Starting the browser...')
     options = ChromeOptions()
     options.add_argument('--no-sandbox')
@@ -21,7 +22,7 @@ def login(user, password):
     syslog.syslog('Browser started successfully. Navigating to the demo page to login.')
     driver.get('https://www.saucedemo.com/')
     
-    # login to the website.
+    # Using CCS_Seletor login to the website.
     driver.find_element(By.CSS_SELECTOR, "input[id='user-name']").send_keys(user)
     driver.find_element(By.CSS_SELECTOR, "input[id='password']").send_keys(password)
     driver.find_element(By.ID, "login-button").click()
@@ -30,6 +31,7 @@ def login(user, password):
     
     return driver
 
+# Add item to Cart
 def add_cart(driver, n_items):
     for i in range(n_items):
         element = "a[id='item_" + str(i) + "_title_link']"  
@@ -41,6 +43,7 @@ def add_cart(driver, n_items):
 
     syslog.syslog('{:d} items are all added to the shopping cart successfully.'.format(n_items))
 
+# Delete item from Cart
 def delete_cart(driver, n_items):
     for i in range(n_items):
         element = "a[id='item_" + str(i) + "_title_link']"

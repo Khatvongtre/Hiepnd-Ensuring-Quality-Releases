@@ -1,9 +1,9 @@
 # Azure subscription
-subscription_id = "d06323f0-ffb0-484c-9e89-0ca5e1d58412"
+subscription_id = "0b72aa91-69d1-4842-8da0-1dbc098c1665"
 # Appliction id
-client_id = "65f23613-b97f-4050-9ff1-8ebca0a8ed91"
+client_id = "e7cbfd68-4a29-4b58-8f13-c917e26b008d"
 # Secret Id & Tenant Id
-client_secret = "UJa8Q~SQLCbuxyem_FXMtp7it204ZlX.8CvzcaSw"
+client_secret = "yct8Q~irzE0wsBQB-OUNKkJtIvuSMJ2xpQMMLb.H"
 tenant_id = "f958e84a-92b8-439f-a62d-4f45996b6d07"
 
 # Resource Group & Location

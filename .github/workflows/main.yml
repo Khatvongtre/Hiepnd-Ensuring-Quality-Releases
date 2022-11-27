@@ -17,7 +17,7 @@ pool:
 
 stages:
 #--------------------------------------------#  
-# BUILD STAGE
+# BUILD
 #--------------------------------------------#    
 - stage: Build
   jobs:
@@ -67,13 +67,12 @@ stages:
   - job: PublishArtifact
     displayName: 'Publish artifacts: Selenium tests, FakeRestAPI code'
     dependsOn: BuildInfrastructureWithTerraform
-    condition: true
     steps:
+
     #--------------------------------------------#
     # Selenium (UI) Test Suite - Archive the package  
     # "ArchiveFiles@2" picks up the web package and archives it.
     - task: ArchiveFiles@2
-      condition: false
       displayName: 'Archive selenium tests'
       inputs:
         rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium'
@@ -82,7 +81,6 @@ stages:
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-ui-tests.zip'
     # Selenium Test Suite - Publish the package  
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-ui-tests.zip   # Same as the archiveFile artifact above. 
-      condition: false
       displayName: 'Upload selenium tests'
       artifact: drop-ui-tests
 
@@ -102,15 +100,14 @@ stages:
       artifact: drop-fakerestapi
     
 #--------------------------------------------#  
-# DEPLOYMENT STAGE
+# DEPLOYMENT
 #--------------------------------------------#    
 - stage: Deploy
-  condition: false
   jobs:
   #--------------------------------------------#  
   # Deploy FakeRestAPI Web App
   - deployment: DeployAppService
-    condition: true
+    condition: false
     pool: 
       name: '$(poolName)'
     environment: '$(environmentName)'
@@ -149,7 +146,6 @@ stages:
             inputs:
               targetType: 'inline'
               script: |           
-                pwd
                 pip3 install selenium
                 wget https://chromedriver.storage.googleapis.com/107.0.5304.62/chromedriver_linux64.zip
                 unzip chromedriver_linux64.zip 
@@ -163,13 +159,8 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                echo '------------> current path' 
-                pwd
                 unzip -o $(Pipeline.Workspace)/drop-ui-tests/$(Build.BuildId)-ui-tests.zip -d .
-                echo '------------> list of file' 
-                ls
                 python3 login.py > ui-logs$(Build.BuildId).log
-                ls
                 sudo mkdir /var/logs
                 sudo mkdir /var/logs/selenium
                 sudo cp ui-logs$(Build.BuildId).log /var/logs/selenium
@@ -183,13 +174,11 @@ stages:
               artifactName: 'drop-selenium-logs'
                 
 #--------------------------------------------#  
-# TEST STAGE
+# TEST
 #--------------------------------------------#    
 - stage: Test
-  condition: true
   jobs:
   - job: TestWithPostman
-    condition: false
     displayName: 'Test with Postman'
     steps:
     - task: CmdLine@2
@@ -239,38 +228,33 @@ stages:
         testRunTitle: 'Postman regression and data validation test'
   
   - job: TestWithJmeter
+    condition: false
     displayName: 'Test with Jmeter'
     steps:
     #--------------------------------------------#    
-    # Run JMeter test suite against the App Service
+    # Run JMeter test
     - task: CmdLine@2
       displayName: 'Run Jmeter'
       inputs:
         script: |
-          echo '-------> Path:'
-          pwd
-
           echo '-------> Cleanning old data...'
           rm -rf tests
           echo '-------> Cleanned old data'
-          
           export PATH=/home/hiepnd/jmeter/bin:$PATH
- 
           echo '-------> path with jmeter:' $PATH
-          
-          echo '-------> jmeter testing endurance...'
+          echo '-------> create jmeter stress test ...'
           jmeter -n -t stress-test.jmx \
             -l logs/stress-test-output.csv \
             -e -f -o logs/stress-test-log \
             -j logs/stress-test.log
 
-          echo '-------> jmeter testing endurance...'
+          echo '-------> crete jmeter endurance test ...'
           jmeter -n -t endurance-test.jmx \
             -l logs/endurance-test-output.csv \
             -e -f -o logs/endurance-test-log \
             -j logs/endurance-test.log
 
-          echo '-------> jmeter tested'
+          echo '-------> jmeter completed'
 
         workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter'
     - task: ArchiveFiles@2
