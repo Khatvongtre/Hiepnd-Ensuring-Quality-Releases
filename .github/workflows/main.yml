@@ -22,7 +22,7 @@ stages:
 - stage: Build
   jobs:
   - job: BuildInfrastructureWithTerraform
-    condition: true
+    condition: false
     steps:
     #--------------------------------------------#  
     # Use Terraform to create the Infrastructure      
@@ -103,7 +103,7 @@ stages:
 # DEPLOYMENT STAGE
 #--------------------------------------------#    
 - stage: Deploy
-  condition: true
+  condition: false
   jobs:
   #--------------------------------------------#  
   # Deploy FakeRestAPI Web App
@@ -187,6 +187,7 @@ stages:
   condition: true
   jobs:
   - job: TestWithPostman
+    condition: false
     displayName: 'Test with Postman'
     steps:
     - task: CmdLine@2
@@ -251,7 +252,7 @@ stages:
           rm -rf tests
           echo '-------> Cleanned old data'
           
-          export PATH=$PATH:/home/hiepnd/jmeter/bin
+          export PATH=/home/hiepnd/jmeter/bin:$PATH
  
           echo '-------> path with jmeter:' $PATH
           
