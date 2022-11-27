@@ -1,10 +1,10 @@
-PAT: kgc3kzekbikfzmkldek5fzqcy7h56gtqo3cupqu2s5eesi2vz66q
+PAT: pxdkkjacld2svioby446qczfxytnrjf77wv4xboyvntjn7cgic4a
 
 Storage account:
 RESOURCE_GROUP_NAME=AzureDevops
-STORAGE_ACCOUNT_NAME=tfstate1270723493
-CONTAINER_NAME=tfstate
-ACCOUNT_KEY=U/BcOz8lqj13dTpU7hp0ktSOQBiLv8GYB9loPf10vn+cgTIZBgww4xQVeeXQm0CeOH0nJStj2/p/+AStecq7yQ==
+STORAGE_ACCOUNT_NAME=storagehiepnd2022
+CONTAINER_NAME=storage
+ACCOUNT_KEY=coM+KdYDdI55a7CTXgFxeJCIG/tucUzeXiuDVtF5xOLPCOpRFP+1HpF+B1niT127F106oCqliGVn+AStcrNJfQ==
 
 
 

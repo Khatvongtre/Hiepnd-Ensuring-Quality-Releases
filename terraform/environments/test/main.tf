@@ -10,7 +10,7 @@ terraform {
     storage_account_name = "storagehiepnd2022"
     container_name       = "storage"
     key                  = "test.terraform.storage"
-    access_key           = "qTPSU76YSiot1XOfN0tNHnG6G3qy1kr7B3kE4thUB4SZTRWXGOfm7Vam6FF8/C1DkJjMINHMZBXd+AStpxjQxg=="
+    access_key           = "coM+KdYDdI55a7CTXgFxeJCIG/tucUzeXiuDVtF5xOLPCOpRFP+1HpF+B1niT127F106oCqliGVn+AStcrNJfQ=="
   }
 }
 
