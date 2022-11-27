@@ -105,12 +105,10 @@ stages:
 # DEPLOYMENT STAGE
 #--------------------------------------------#    
 - stage: Deploy
-  condition: false
   jobs:
   #--------------------------------------------#  
   # Deploy FakeRestAPI Web App
   - deployment: DeployAppService
-    condition: true
     pool: 
       name: '$(poolName)'
     environment: '$(environmentName)'
@@ -130,7 +128,6 @@ stages:
  # Selenium | Functional UI Tests
  # ToDo: 
   - deployment: DeployVM
-    condition: false
     displayName: Deploy VM and execute Selenium tests
     workspace:
       clean: all
