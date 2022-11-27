@@ -186,10 +186,8 @@ stages:
 # TEST STAGE
 #--------------------------------------------#    
 - stage: Test
-  condition: false
   jobs:
   - job: TestWithPostman
-    condition: false
     displayName: 'Test with Postman'
     steps:
     - task: CmdLine@2
