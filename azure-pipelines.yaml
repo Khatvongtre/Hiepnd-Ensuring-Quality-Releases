@@ -105,7 +105,7 @@ stages:
 # DEPLOYMENT STAGE
 #--------------------------------------------#    
 - stage: Deploy
-  condition: true
+  condition: false
   jobs:
   #--------------------------------------------#  
   # Deploy FakeRestAPI Web App
@@ -189,6 +189,7 @@ stages:
   condition: false
   jobs:
   - job: TestWithPostman
+    condition: false
     displayName: 'Test with Postman'
     steps:
     - task: CmdLine@2
@@ -253,7 +254,7 @@ stages:
           rm -rf tests
           echo '-------> Cleanned old data'
           
-          export PATH=$PATH:/home/hiepnd/apache-jmeter-5.4.3/bin
+          export PATH=/home/hiepnd/jmeter/bin:$PATH
  
           echo '-------> path with jmeter:' $PATH
           
