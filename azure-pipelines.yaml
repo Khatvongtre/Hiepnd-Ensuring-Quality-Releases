@@ -251,7 +251,8 @@ stages:
           rm -rf tests
           echo '-------> Cleanned old data'
           
-          export PATH=$PATH:/home/hiepnd/Desktop/Tools/apache-jmeter-5.5/bin 
+          export PATH=$PATH:/home/hiepnd/apache-jmeter-5.4.3/bin
+ 
           echo '-------> path with jmeter:' $PATH
           
           echo '-------> jmeter testing endurance...'

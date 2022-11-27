@@ -4,7 +4,7 @@ variable "client_id" {}
 variable "client_secret" {}
 variable "tenant_id" {}
 
-# Resource Group/Location
+# Resource Group & Location
 variable "location" {}
 variable "resource_group" {}
 variable "application_type" {}
@@ -18,5 +18,5 @@ variable address_space {}
 variable vm_username {}
 variable vm_password {}
 
-# Image for linux
+# Image
 variable image_name {}
