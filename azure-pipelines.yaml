@@ -21,7 +21,7 @@ stages:
 #--------------------------------------------#    
 - stage: Build
   jobs:
-  - job: Build Infrastructure With Terraform
+  - job: BuildInfrastructureWithTerraform
     condition: false
     steps:
     #--------------------------------------------#  
@@ -107,7 +107,7 @@ stages:
   jobs:
   #--------------------------------------------#  
   # Deploy FakeRestAPI Web App
-  - deployment: Deploy_App_Service
+  - deployment: DeployAppService
     condition: false
     pool: 
       name: '$(poolName)'
@@ -127,7 +127,7 @@ stages:
   #--------------------------------------------#  
  # Selenium | Functional UI Tests
  # ToDo: 
-  - deployment: Deploy_VM
+  - deployment: DeployVM
     displayName: Deploy VM and execute Selenium tests
     workspace:
       clean: all
