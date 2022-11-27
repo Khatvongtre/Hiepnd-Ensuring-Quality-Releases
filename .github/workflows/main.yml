@@ -106,7 +106,6 @@ stages:
   #--------------------------------------------#  
   # Deploy FakeRestAPI Web App
   - deployment: DeployAppService
-    condition: false
     pool: 
       name: '$(poolName)'
     environment: '$(environmentName)'
@@ -226,7 +225,6 @@ stages:
         testRunTitle: 'Postman regression and data validation test'
   
   - job: TestWithJmeter
-    condition: false
     displayName: 'Test with Jmeter'
     steps:
     #--------------------------------------------#    
