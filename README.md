@@ -27,13 +27,7 @@ This project demonstrate how to build a pipeline that:
 * Open bash and clone project using this command:
 
 ``` bash
-$ git clone https://github.com/nghianv201096/UdacityDevops3_EnsuringQualityReleases.git
-```
-
-* Go to project folder and open it with VS code:
-``` bash
-$ cd UdacityDevops3_EnsuringQualityReleases.git
-$ code .
+$ git clone https://github.com/Khatvongtre/Udacity-Devops-Project3.git
 ```
 
 * After you finish then you will see the structure of the project like this:
